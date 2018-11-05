@@ -1,0 +1,10 @@
+@mixin buttonType($color, $background-color, $padding, $height) {
+  border: none;
+  color: $color;
+  background-color: $background-color;
+  font-size: 1.2rem;
+  height: $height;
+  padding: $padding;
+  display: inline-block;
+  border-radius: $std-radius;
+}

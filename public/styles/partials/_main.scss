@@ -2,3 +2,40 @@ main {
   width: 100%;
   padding-top: 100px;
 }
+.tweet-container {
+  max-width: 450px;
+  margin: 0 auto;
+  height: 100%;
+  background-color: rgba(245, 245, 245, 0.75);
+  padding: 10px;
+  border-radius: $small-radius;
+
+  h2 {
+    color: $purple;
+  }
+
+  textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: $small-radius;
+    padding: 10px;
+
+    &::placeholder {
+      color: $purple;
+    }
+  }
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+button[type='submit'] {
+  @include buttonType($white, $purple, 0 15px 0 10px, 30px);
+
+  &:hover {
+    color: $yellow;
+    transition: $trans;
+  }
+}
