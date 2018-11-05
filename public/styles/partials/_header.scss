@@ -1,0 +1,51 @@
+button {
+  border: none;
+  color: $purple;
+  background-color: $white;
+  font-size: 2rem;
+  height: 50px;
+  padding: 5px 15px;
+  display: inline-block;
+  border-radius: 25px;
+
+  &:hover {
+    background-color: $purple;
+    color: $yellow;
+    transition: $trans;
+  }
+}
+header {
+  background: linear-gradient(to right top, $orange, $red);
+  position: fixed;
+  width: 100vw;
+  opacity: 0.75;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+.logo {
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  filter: invert(0.2) sepia(1) hue-rotate(-130deg) saturate(2.5);
+}
+
+h1 {
+  color: $purple;
+  margin: 1rem 0;
+}
+
+.hamburger {
+  margin: 0 20px;
+  font-size: 2rem;
+  color: $purple;
+  display: none; /* Not being displayed until screen hits a certain treshold */
+}
+.navbar-general {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
