@@ -22,6 +22,10 @@ module.exports = function(DataHelpers) {
       res.status(400).json({ error: 'invalid request: no data in POST body'});
       return;
     }
+    if (req.body.text.length > 140) {
+      res.status(400).json({ error: 'Tweet is too long to be posted'});
+      return;
+    }
 
     const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
     const tweet = {

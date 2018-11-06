@@ -437,4 +437,8 @@ button[type='submit']:hover {
   -webkit-transition: all linear 0.25s;
   transition: all linear 0.25s;
 }
+
+.counter.red {
+  color: red;
+}
 /*# sourceMappingURL=layout.css.map */
