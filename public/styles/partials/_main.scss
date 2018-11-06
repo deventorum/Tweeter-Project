@@ -2,17 +2,88 @@ main {
   width: 100%;
   padding-top: 100px;
 }
-.tweet-container {
-  max-width: 450px;
+.tweets {
+  max-width: 500px;
+  width: 100%;
   margin: 0 auto;
-  height: 100%;
+  padding: 10px 25px;
   background-color: rgba(245, 245, 245, 0.75);
-  padding: 10px;
   border-radius: $small-radius;
 
-  h2 {
+  h3 {
     color: $purple;
   }
+}
+article {
+  background-color: $yellow-transp;
+  border-radius: $small-radius;
+  margin: 10px 0;
+
+  header {
+    padding: 10px;
+    background-color: $pink-transp;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px 10px 0 0;
+
+    p {
+      align-self: flex-start;
+      color: $pink;
+    }
+  }
+
+  h2 {
+    color: $yellow;
+  }
+  footer {
+    padding: 10px;
+    background-color: $pink-transp;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0 0 10px 10px;
+
+    p {
+      color: $purple;
+    }
+    i {
+      color: transparent;
+    }
+  }
+  &:hover {
+    header {
+      background-color: $red-transp;
+    }
+    footer {
+      background-color: $red-transp;
+
+      i {
+        color: $purple;
+      }
+    }
+  }
+}
+.avatar {
+  height: 100px;
+  width: 100px;
+}
+.tweet {
+  min-height: 200px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    color: $purple;
+  }
+}
+.create-tweet {
+  background-color: $yellow-transp;
+  border-radius: $small-radius;
+  margin: 10px 0;
+  padding: 10px;
 
   textarea {
     width: 100%;
@@ -35,10 +106,13 @@ button[type='submit'] {
   @include buttonType($white, $purple, 0 15px 0 10px, 30px);
 
   &:hover {
-    color: $yellow;
+    color: $red;
     transition: $trans;
   }
 }
-.counter.red {
-  color: red;
+.counter {
+  font-weight: 700;
+  &.red {
+    color: $red;
+  }
 }

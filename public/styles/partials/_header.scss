@@ -1,14 +1,8 @@
-header {
+.main-header {
   background: linear-gradient(to right top, $orange, $red);
   position: fixed;
   width: 100vw;
   opacity: 0.75;
-
-  .wrapper {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
 }
 .logo {
   width: 80px;

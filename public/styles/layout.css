@@ -253,6 +253,14 @@ button {
   font-style: italic;
 }
 
+.tweet p {
+  font-size: 1.5rem;
+}
+
+article p {
+  font-weight: 700;
+}
+
 body {
   background-image: url(../images/dawn-dusk.jpg);
   background-size: cover;
@@ -291,15 +299,7 @@ li {
   text-decoration: none;
 }
 
-header {
-  background: -webkit-gradient(linear, left bottom, right top, from(#f4874b), to(#f56a4e));
-  background: linear-gradient(to right top, #f4874b, #f56a4e);
-  position: fixed;
-  width: 100vw;
-  opacity: 0.75;
-}
-
-header .wrapper {
+.wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -308,6 +308,14 @@ header .wrapper {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.main-header {
+  background: -webkit-gradient(linear, left bottom, right top, from(#f4874b), to(#f56a4e));
+  background: linear-gradient(to right top, #f4874b, #f56a4e);
+  position: fixed;
+  width: 100vw;
+  opacity: 0.75;
 }
 
 .logo {
@@ -371,43 +379,139 @@ main {
   padding-top: 100px;
 }
 
-.tweet-container {
-  max-width: 450px;
+.tweets {
+  max-width: 500px;
+  width: 100%;
   margin: 0 auto;
-  height: 100%;
+  padding: 10px 25px;
   background-color: rgba(245, 245, 245, 0.75);
-  padding: 10px;
   border-radius: 10px;
 }
 
-.tweet-container h2 {
+.tweets h3 {
   color: #5c3a72;
 }
 
-.tweet-container textarea {
+article {
+  background-color: rgba(243, 176, 90, 0.5);
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+article header {
+  padding: 10px;
+  background-color: rgba(163, 88, 109, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-radius: 10px 10px 0 0;
+}
+
+article header p {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  color: #a3586d;
+}
+
+article h2 {
+  color: #f3b05a;
+}
+
+article footer {
+  padding: 10px;
+  background-color: rgba(163, 88, 109, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-radius: 0 0 10px 10px;
+}
+
+article footer p {
+  color: #5c3a72;
+}
+
+article footer i {
+  color: transparent;
+}
+
+article:hover header {
+  background-color: rgba(245, 106, 78, 0.5);
+}
+
+article:hover footer {
+  background-color: rgba(245, 106, 78, 0.5);
+}
+
+article:hover footer i {
+  color: #5c3a72;
+}
+
+.avatar {
+  height: 100px;
+  width: 100px;
+}
+
+.tweet {
+  min-height: 200px;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.tweet p {
+  color: #5c3a72;
+}
+
+.create-tweet {
+  background-color: rgba(243, 176, 90, 0.5);
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.create-tweet textarea {
   width: 100%;
   margin-bottom: 10px;
   border-radius: 10px;
   padding: 10px;
 }
 
-.tweet-container textarea::-webkit-input-placeholder {
+.create-tweet textarea::-webkit-input-placeholder {
   color: #5c3a72;
 }
 
-.tweet-container textarea:-ms-input-placeholder {
+.create-tweet textarea:-ms-input-placeholder {
   color: #5c3a72;
 }
 
-.tweet-container textarea::-ms-input-placeholder {
+.create-tweet textarea::-ms-input-placeholder {
   color: #5c3a72;
 }
 
-.tweet-container textarea::placeholder {
+.create-tweet textarea::placeholder {
   color: #5c3a72;
 }
 
-.tweet-container form {
+.create-tweet form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -433,12 +537,16 @@ button[type='submit'] {
 }
 
 button[type='submit']:hover {
-  color: #f3b05a;
+  color: #f56a4e;
   -webkit-transition: all linear 0.25s;
   transition: all linear 0.25s;
 }
 
+.counter {
+  font-weight: 700;
+}
+
 .counter.red {
-  color: red;
+  color: #f56a4e;
 }
 /*# sourceMappingURL=layout.css.map */

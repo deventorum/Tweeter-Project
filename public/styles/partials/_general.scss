@@ -30,3 +30,8 @@ ul {
 li {
   text-decoration: none;
 }
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
