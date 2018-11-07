@@ -1,4 +1,4 @@
-const data = [
+const tweetData = [
   {
     "user": {
       "name": "Newton",
@@ -86,9 +86,10 @@ function showTimeDiff(range) {
 }
 
 $(document).ready(function() {
+  
+  // Function creates an html element of the tweet to be rendered
   function createTweetElement(data) {
     const $tweet = $("<article/>");
-
     // Header of the tweet
     const $header = $(
       `<header>
@@ -97,19 +98,16 @@ $(document).ready(function() {
         <p>${data.user.handle}</p>
       </header>`
     )
-
     // The tweet
     const $mainBody = $(
       `<div class="tweet">
         <p>${data.content.text}</p>
       </div>`
     )
-
     const prevDate = data.created_at;
     const currentDate = new Date();
     // Calculates the time difference 
     const timeDiff = showTimeDiff(Math.abs(currentDate.getTime() - prevDate))
-
     // Footer of the tweet
     const $footer = $(
       `<footer>
@@ -126,20 +124,48 @@ $(document).ready(function() {
     )
     return $tweet.append($header).append($mainBody).append($footer);
   }
-  const renderTweets = database => {
+
+  // Renders all tweets from the database
+  function renderTweets(database) {
     database.forEach(dataset => {
       $(".tweets").append(createTweetElement(dataset))
     })
   }
-  renderTweets(data);
 
-  $(".new-tweet").on('submit', function(event) {
+  function loadTweets() {
+    $.ajax('/tweets', { method: 'GET' })
+      .then(function (data) {
+        renderTweets(data);
+      });
+  }
+  loadTweets()
+
+  
+
+
+
+  // Create a post request on create tweet event
+  $('.new-tweet').on('submit', function(event) {
     event.preventDefault();
-    const form = $(this);
+    const $form = $(this);
+    const $postLength = $form.children('textarea').val().length;
+
+    // Front End Validity Checks
+    // Check for an empty field
+    if ($postLength === 0) {
+      $form.append($(`<p id='error' class='red'>Text area is empty</p>`))
+      return;
+    }
+    if ($postLength > 140) {
+      $form.append($(`<p id='error' class='red'>Tweet is more than 140 characters long</p>`))
+      return;
+    }
+
+    
     $.ajax({
-      type: form.attr('method'),
-      url: form.attr('action'),
-      data: form.serialize(), // serializes the form's elements.
+      type: $form.attr('method'),
+      url: $form.attr('action'),
+      data: $form.serialize(), // serializes the form's elements.
       success: function(data)
       {
           console.log(data);

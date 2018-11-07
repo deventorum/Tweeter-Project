@@ -542,11 +542,8 @@ button[type='submit']:hover {
   transition: all linear 0.25s;
 }
 
-.counter {
-  font-weight: 700;
-}
-
-.counter.red {
+.red {
   color: #f56a4e;
+  font-weight: 700;
 }
 /*# sourceMappingURL=layout.css.map */

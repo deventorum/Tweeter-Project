@@ -110,9 +110,7 @@ button[type='submit'] {
     transition: $trans;
   }
 }
-.counter {
+.red {
+  color: $red;
   font-weight: 700;
-  &.red {
-    color: $red;
-  }
 }
