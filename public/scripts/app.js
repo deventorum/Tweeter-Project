@@ -126,9 +126,27 @@ $(document).ready(function() {
     )
     return $tweet.append($header).append($mainBody).append($footer);
   }
+  const renderTweets = database => {
+    database.forEach(dataset => {
+      $(".tweets").append(createTweetElement(dataset))
+    })
+  }
+  renderTweets(data);
 
-  data.forEach(dataset => {
-    $('.tweets').append(createTweetElement(dataset))
+  $(".new-tweet").on('submit', function(event) {
+    event.preventDefault();
+    const form = $(this);
+    $.ajax({
+      type: form.attr('method'),
+      url: form.attr('action'),
+      data: form.serialize(), // serializes the form's elements.
+      success: function(data)
+      {
+          console.log(data);
+      }
+    });
   })
+
+
   
 })
