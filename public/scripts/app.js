@@ -38,6 +38,13 @@ function showTimeDiff(range) {
   }
 }
 
+//Function that prevents XSS attack
+function escape(str) {
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
 $(document).ready(function() {
   
   // Function creates an html element of the tweet to be rendered
@@ -54,7 +61,7 @@ $(document).ready(function() {
     // The tweet
     const $mainBody = $(
       `<div class="tweet">
-        <p>${data.content.text}</p>
+        <p>${escape(data.content.text)}</p>
       </div>`
     )
     const prevDate = data.created_at;
@@ -81,7 +88,6 @@ $(document).ready(function() {
   // Renders all tweets from the database
   function renderTweets(database) {
     database.forEach(dataset => {
-      /* $(".tweets").append(createTweetElement(dataset)) */
       createTweetElement(dataset).insertAfter('.create-tweet')
     })
   }
@@ -129,6 +135,4 @@ $(document).ready(function() {
     $form.children('textarea').val('');
   })
 
-
-  
 })
