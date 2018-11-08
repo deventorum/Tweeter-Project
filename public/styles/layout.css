@@ -313,9 +313,11 @@ li {
 .main-header {
   background: -webkit-gradient(linear, left bottom, right top, from(#f4874b), to(#f56a4e));
   background: linear-gradient(to right top, #f4874b, #f56a4e);
-  position: fixed;
   width: 100vw;
   opacity: 0.75;
+  position: fixed;
+  padding: 0;
+  margin-top: 0;
 }
 
 .logo {
@@ -486,6 +488,7 @@ article:hover footer i {
   border-radius: 10px;
   margin: 10px 0;
   padding: 10px;
+  display: none;
 }
 
 .create-tweet textarea {
@@ -545,5 +548,21 @@ button[type='submit']:hover {
 .red {
   color: #f56a4e;
   font-weight: 700;
+}
+
+.main-footer {
+  background: -webkit-gradient(linear, left bottom, right top, from(#f4874b), to(#f56a4e));
+  background: linear-gradient(to right top, #f4874b, #f56a4e);
+  width: 100vw;
+  opacity: 0.75;
+  position: static;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.main-footer p {
+  font-weight: 700;
+  font-style: italic;
+  color: #5c3a72;
 }
 /*# sourceMappingURL=layout.css.map */

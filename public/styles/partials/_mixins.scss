@@ -8,3 +8,11 @@
   display: inline-block;
   border-radius: $std-radius;
 }
+@mixin headFooter($position, $padding, $margin-top) {
+  background: linear-gradient(to right top, $orange, $red);
+  width: 100vw;
+  opacity: 0.75;
+  position: $position;
+  padding: $padding;
+  margin-top: $margin-top;
+}
