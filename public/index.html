@@ -25,14 +25,14 @@
       <img src="./images/dove-solid.svg" class="logo" alt="An icon of dove">
       <h1>Tweeter</h1>
       <nav class="navbar-general">
-        <a href="#anchor" class="new-button"><i class="fas fa-feather-alt"></i> New Tweet</a>
+        <a href="#" class="new-button"><i class="fas fa-feather-alt"></i> New Tweet</a>
         <p class="hamburger"><i class="fas fa-bars"></i></p>
       </nav>
     </div>
   </header>
 
   <!-- Page-specific (main) content here -->
-  <main class="container" id="anchor">
+  <main class="container">
     <div class="wrapper">
       <div class="tweets">
         <section class="create-tweet">
@@ -41,7 +41,7 @@
               <hr>
           </header>
           <form action="/tweets/" method="POST" class="new-tweet">
-            <textarea name="text" placeholder="What are you humming about?" minlength="1" required></textarea>
+            <textarea id="tweet-text" name="text" placeholder="What are you humming about?" minlength="1" required></textarea>
             <button type="submit">Post</button>
             <p class="counter">140</p>
           </form>

@@ -128,11 +128,18 @@ $(document).ready(function() {
       success: function(data)
       {
         // Insetrs new tweet after the tweet form
-        createTweetElement(data).insertAfter('.create-tweet')
+        createTweetElement(data).insertAfter('.create-tweet');
       }
     });
     // Clears the text area once the tweet is posted
     $form.children('textarea').val('');
   })
+
+  $('.new-button').on('click', function() {
+    $('.create-tweet').slideToggle();
+    $('#tweet-text').focus();
+  })
+
+
 
 })
