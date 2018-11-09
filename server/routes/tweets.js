@@ -45,6 +45,18 @@ module.exports = function(DataHelpers) {
     });
   });
 
+  tweetsRoutes.post("/registration", function(req, res) {
+    console.log('registration')
+  })
+
+  tweetsRoutes.post("/login", function(req, res) {
+    console.log('login');
+  })
+
+  tweetsRoutes.post("/logout", function(req, res) {
+    console.log('logout');
+  })
+
   return tweetsRoutes;
 
 }

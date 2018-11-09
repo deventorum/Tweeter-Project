@@ -1,63 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Meta Information -->
+    <title>Tweeter - Home Page</title>
+    <!-- App CSS -->
+    <link rel="stylesheet" href="./styles/layout.css" type="text/css" />
+    <!-- Favicon -->
+    <link type="image/png" href="images/icons/favicon-32x32.png" rel="icon" />
+    <!-- FontAwesone -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous"
+    />
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700,700i"
+      rel="stylesheet"
+    />
+    <!-- External JS -->
+    <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+    <!-- App JS -->
+    <script type="text/javascript" src="scripts/app.js"></script>
+    <script type="text/javascript" src="scripts/composer-char-counter.js"></script>
+    <script type="text/javascript" src="scripts/login-registration.js"></script>
+  </head>
 
-<head>
-  <!-- Meta Information -->
-  <title>Tweeter - Home Page</title>
-  <!-- App CSS -->
-  <link rel="stylesheet" href="./styles/layout.css" type="text/css" />
-  <!-- Favicon -->
-  <link type="image/png" href="images/icons/favicon-32x32.png" rel="icon">
-  <!-- FontAwesone -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-    crossorigin="anonymous">
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700,700i" rel="stylesheet">
-  <!-- External JS -->
-  <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
-  <!-- App JS -->
-  <script type="text/javascript" src="/scripts/app.js"></script>
-  <script type="text/javascript" src="./scripts/composer-char-counter.js"></script>
-</head>
-
-<body>
-  <header class='main-header'>
-    <!-- Top nav bar (fixed) -->
-    <div class="wrapper">
-      <img src="./images/dove-solid.svg" class="logo" alt="An icon of dove">
-      <h1>Tweeter</h1>
-      <nav class="navbar-general">
-        <a href="#" class="new-button"><i class="fas fa-feather-alt"></i> New Tweet</a>
-        <p class="hamburger"><i class="fas fa-bars"></i></p>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Page-specific (main) content here -->
-  <main class="container">
-    <div class="wrapper">
-      <div class="tweets">
-        <section class="create-tweet">
-          <header>
-            <h3>Compose tweet</h2>
-              <hr>
-          </header>
-          <form action="/tweets/" method="POST" class="new-tweet">
-            <textarea id="tweet-text" name="text" placeholder="What are you humming about?" minlength="1" required></textarea>
-            <button type="submit">Post</button>
-            <p class="counter">140</p>
+  <body>
+    <header class="main-header">
+      <!-- Top nav bar (fixed) -->
+      <div class="upper-header">
+        <img src="./images/dove-solid.svg" class="logo" alt="An icon of dove" />
+        <h1>Tweeter</h1>
+        <nav class="navbar-general">
+          <a href="#" class="nav-button new-button">
+            <i class="fas fa-feather-alt"></i> New Tweet</a>
+          <a href="#" class="nav-button sign-in">Sign In</a>
+          <a href="#" class="nav-button sign-up">Sign Up</a>
+          <form class="logout" action="/tweets/logout" method="POST">
+            <button class="nav-button">Log Out</button>
           </form>
-        </section>
+        </nav>
       </div>
-    </div>
-  </main>
-  <footer class='main-footer'>
-    <div class="wrapper">
-      <p>Copyright &copy 2018 Denys Tkachuk</p>
-    </div>
-  </footer>
 
+      <div class="login-container">
+        <form action="/tweets/login" method="POST" class='login-form'>
+          <input type="text" placeholder="Enter your user name" name='userEmail'>
+          <input id="password" type="password" name="password" placeholder="Enter your password" minlength=5>
+          <button class='nav-button'>Login</button>
+        </form>
+      </div>
 
-</body>
+      <div class="registration-container">
+        <form action="/tweets/registration" class="registration" method='POST'>
+          <label for="name">Full Name</label>
+          <input id="name" type="text" name="userName" placeholder="Enter your name" minlength=3>
 
+          <label for="handle">User Name</label>
+          <input id="handle" type="text" name="handle" placeholder="Enter your name" minlength=3>
+
+          <label for="password">Password</label>
+          <input id="password" type="password" name="password" placeholder="Enter your password" minlength=5>
+
+          <input type="password" name="confPassword" placeholder="Confirm the password" minlength=5>
+          <button class="nav-button">Create an account</button>
+        </form>
+      </div>
+    </header>
+
+    <!-- Page-specific (main) content here -->
+    <main class="container">
+      <div class="wrapper">
+        <div class="tweets">
+          <section class="create-tweet">
+            <header>
+              <h3>Compose tweet</h3>
+              <hr />
+            </header>
+            <form action="/tweets/" method="POST" class="new-tweet">
+              <textarea
+                id="tweet-text"
+                name="text"
+                placeholder="What are you humming about?"
+                minlength="1"
+                required
+              ></textarea>
+              <button type="submit">Post</button>
+              <p class="counter">140</p>
+            </form>
+          </section>
+        </div>
+      </div>
+    </main>
+    <footer class="main-footer">
+      <div class="wrapper"><p>Copyright &copy 2018 Denys Tkachuk</p></div>
+    </footer>
+  </body>
 </html>
