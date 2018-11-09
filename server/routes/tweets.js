@@ -45,7 +45,36 @@ module.exports = function(DataHelpers) {
     });
   });
 
+  tweetsRoutes.post("/login", function(req, res) {
+    const loginName = req.body.handle;
+    const loginPassword = req.body.password;
+    
+    console.log(req.body);
+    DataHelpers.checkUser(loginName, (err, user) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+      }
+      
+      if (loginName === user.handle) {
+        if (parseInt(loginPassword) === user.password) {
+        }
+      }
+    })
+  })
+
   tweetsRoutes.post("/registration", function(req, res) {
+    const newUser = {
+      "name": req.body.userName,
+      "handle": req.body.handle,
+      "password": req.body.password
+    }
+    DataHelpers.addUser(newUser, (err) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.json(newUser);
+      }
+    })
     console.log('registration')
   })
 
