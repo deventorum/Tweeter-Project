@@ -6,13 +6,16 @@ const PORT          = 8080;
 const express       = require("express");
 const bodyParser    = require("body-parser");
 const app           = express();
+const cookieSession = require('cookie-session');
 const {MongoClient} = require("mongodb");
 const MONGODB_URI = "mongodb://localhost:27017/tweeter";
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-
-
+app.use(cookieSession({
+	name: 'session',
+	keys: ['very-secret-key'],
+}));
 
 // Connecting MongoDB
 MongoClient.connect(MONGODB_URI, (err, db) => {
@@ -31,9 +34,6 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
   app.use("/tweets", tweetsRoutes);
 
 });
-
-
-
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

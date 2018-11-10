@@ -27,22 +27,33 @@ module.exports = function(DataHelpers) {
       return;
     }
 
-    const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
-    const tweet = {
-      user: user,
-      content: {
-        text: req.body.text
-      },
-      created_at: Date.now()
-    };
 
-    DataHelpers.saveTweet(tweet, (err) => {
+    // User can post a tweet using logged information 
+    DataHelpers.getUser(req.session['userID'], (err, user) => {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
-        res.json(tweet);
+        // cretes tweet element that will be passed to ajax
+        const tweet = {
+          user: user,
+          content: {
+            text: req.body.text
+          },
+          created_at: Date.now()
+        };
+        
+        // passes tweet to be rendered
+        DataHelpers.saveTweet(tweet, (err) => {
+          if (err) {
+            res.status(500).json({ error: err.message });
+          } else {
+            res.json(tweet);
+          }
+        });
+
       }
     });
+
   });
 
   tweetsRoutes.post("/login", function(req, res) {
@@ -56,34 +67,61 @@ module.exports = function(DataHelpers) {
       }
       
       if (loginName === user.handle) {
-        if (parseInt(loginPassword) === user.password) {
+        if (parseInt(loginPassword) === parseInt(user.password)) {
+          req.session['userID'] = req.body.handle;
+          res.redirect('/');
         }
       }
     })
+    
   })
 
   tweetsRoutes.post("/registration", function(req, res) {
     const newUser = {
       "name": req.body.userName,
       "handle": req.body.handle,
-      "password": req.body.password
+      "password": req.body.password,
+      "avatars": userHelper.generateAvatars(req.body.handle)
     }
     DataHelpers.addUser(newUser, (err) => {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
-        res.json(newUser);
+        res.redirect("/");
       }
     })
     console.log('registration')
   })
 
-  tweetsRoutes.post("/login", function(req, res) {
-    console.log('login');
-  })
-
   tweetsRoutes.post("/logout", function(req, res) {
     console.log('logout');
+    req.session = null;
+    res.redirect('/');
+  })
+
+  tweetsRoutes.get("/verify", function(req, res) {
+    if (req.session['userID']) {
+      DataHelpers.checkUser(req.session['userID'], (err, user) => {
+        if (err) {
+          res.status(500).json({ error: err.message });
+        }
+        // sends back user object to ajax
+        if (user) {
+          res.json({
+            "name" : user.name,
+            "handle": user.handle,
+            "validity": true
+          })
+          res.status(200);
+        }
+      })
+      
+    } else {
+      res.json({
+        "validity": false
+      })
+      res.status(400);
+    }
   })
 
   return tweetsRoutes;

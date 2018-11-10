@@ -92,7 +92,6 @@ $(document).ready(function() {
     })
   }
 
-  //
   function loadTweets() {
     $.ajax('/tweets', { method: 'GET' })
       .then(function (data) {
@@ -100,6 +99,27 @@ $(document).ready(function() {
       });
   }
   loadTweets()
+
+
+  function verifyUser() {
+    $.ajax('/tweets/verify', { method: 'GET' })
+      .then(function (data) {
+        if (data.validity) {
+          const userHandle = data.handle
+          // only signed users can New Tweet and Log Out buttons
+          $('.new-button').show();
+          $('.log-out button').show();
+          // Shows who is logged in
+          $('.main-header').append(`<div id='signedUser'>Signed in as ${userHandle}</div>`)
+          // enables access to login and registration forms only if no session
+          $('.sign-in').hide();
+          $('.sign-up').hide();
+        } else {
+          
+        }
+      });
+  }
+  verifyUser();
 
   
   // Create a post request on create tweet event
@@ -133,6 +153,7 @@ $(document).ready(function() {
     });
     // Clears the text area once the tweet is posted
     $form.children('textarea').val('');
+    $form.children('.counter').html('140');
   })
 
   $('.new-button').on('click', function() {

@@ -35,35 +35,48 @@
         <h1>Tweeter</h1>
         <nav class="navbar-general">
           <a href="#" class="nav-button new-button">
-            <i class="fas fa-feather-alt"></i> New Tweet</a>
+            <i class="fas fa-feather-alt"></i> New Tweet</a
+          >
           <a href="#" class="nav-button sign-in">Sign In</a>
           <a href="#" class="nav-button sign-up">Sign Up</a>
-          <form class="logout" action="/tweets/logout" method="POST">
+          <!-- button doesn't send a proper request to the server without the form -->
+          <form class="log-out" action="/tweets/logout" method="POST">
             <button class="nav-button">Log Out</button>
           </form>
         </nav>
       </div>
 
       <div class="login-container">
-        <form action="/tweets/login" method="POST" class='login-form'>
-          <input type="text" placeholder="Enter your user name" name='handle'>
-          <input id="password" type="password" name="password" placeholder="Enter your password" minlength=5>
-          <button class='nav-button'>Login</button>
+        <form action="/tweets/login" method="POST" class="login-form">
+          <input type="text" placeholder="Enter your user name" name="handle" />
+          <input type="password" name="password" placeholder="Enter your password" minlength="5" />
+          <button class="nav-button">Login</button>
         </form>
       </div>
 
       <div class="registration-container">
-        <form action="/tweets/registration" class="registration" method='POST'>
+        <form action="/tweets/registration" class="registration" method="POST">
           <label for="name">Full Name</label>
-          <input id="name" type="text" name="userName" placeholder="Enter your name" minlength=3>
+          <input
+            id="name"
+            type="text"
+            name="userName"
+            placeholder="Enter your name"
+            minlength="3"
+          />
 
           <label for="handle">User Name</label>
-          <input id="handle" type="text" name="handle" placeholder="Enter your name">
+          <input id="handle" type="text" name="handle" placeholder="Enter your name" />
 
           <label for="password">Password</label>
-          <input id="password" type="password" name="password" placeholder="Enter your password" minlength=5>
+          <input type="password" name="password" placeholder="Enter your password" minlength="5" />
 
-          <input type="password" name="confPassword" placeholder="Confirm the password" minlength=5>
+          <input
+            type="password"
+            name="confPassword"
+            placeholder="Confirm the password"
+            minlength="5"
+          />
           <button class="nav-button">Create an account</button>
         </form>
       </div>

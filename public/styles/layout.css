@@ -261,6 +261,12 @@ article p {
   font-weight: 700;
 }
 
+#signedUser {
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 700;
+}
+
 body {
   background-image: url(../images/dawn-dusk.jpg);
   background-size: cover;
@@ -323,10 +329,12 @@ li {
   position: fixed;
   padding: 0;
   margin-top: 0;
+  padding-bottom: 20px;
 }
 
 .main-header div {
   width: 100%;
+  max-width: 1280px;
 }
 
 .logo {
@@ -361,7 +369,10 @@ h1 {
   padding: 15px 15px;
   display: inline-block;
   border-radius: 25px;
+  font-style: normal;
+  font-weight: 300;
   margin-left: 10px;
+  font-style: normal;
 }
 
 .nav-button:hover {
@@ -376,11 +387,13 @@ h1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 0 25px;
 }
 
 form {
@@ -404,10 +417,6 @@ form input {
   border: 2px solid #f56a4e;
 }
 
-form .nav-button {
-  margin: 10px 0;
-}
-
 form label {
   font-weight: 700;
   color: #5c3a72;
@@ -421,13 +430,20 @@ form label {
   display: none;
 }
 
-.logout {
-  margin-left: 10px;
+.new-button,
+.log-out button {
+  display: none;
+}
+
+#signedUser {
+  text-align: right;
+  padding: 0 25px;
+  color: #5c3a72;
 }
 
 main {
   width: 100%;
-  padding-top: 100px;
+  padding-top: 150px;
 }
 
 main.padding-reg {
@@ -435,7 +451,7 @@ main.padding-reg {
 }
 
 main.padding-log {
-  padding-top: 300px;
+  padding-top: 325px;
 }
 
 .tweets {
@@ -597,6 +613,8 @@ button[type='submit'] {
   padding: 0 15px 0 10px;
   display: inline-block;
   border-radius: 25px;
+  font-style: normal;
+  font-weight: 300;
 }
 
 button[type='submit']:hover {

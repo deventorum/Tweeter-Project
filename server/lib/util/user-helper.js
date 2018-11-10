@@ -39,5 +39,13 @@ module.exports = {
       handle: userHandle,
       avatars: avatars
     };
+  },
+  generateAvatars: function (userHandle) {
+    const avatarUrlPrefix = `https://vanillicon.com/${md5(userHandle)}`;
+    return {
+      small:   `${avatarUrlPrefix}_50.png`,
+      regular: `${avatarUrlPrefix}.png`,
+      large:   `${avatarUrlPrefix}_200.png`
+    }
   }
 };

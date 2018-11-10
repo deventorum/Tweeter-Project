@@ -1,8 +1,10 @@
 .main-header {
   @include headFooter(fixed, 0, 0);
+  padding-bottom: 20px;
 
   div {
     width: 100%;
+    max-width: 1280px;
   }
 }
 .logo {
@@ -24,6 +26,7 @@ h1 {
 .nav-button {
   @include buttonType($purple, $white, 15px 15px);
   margin-left: 10px;
+  font-style: normal;
 
   &:hover {
     background-color: $purple;
@@ -34,8 +37,9 @@ h1 {
 .upper-header {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 25px;
 }
 form {
   display: flex;
@@ -49,10 +53,6 @@ form {
     border-radius: $small-radius;
     border: 2px solid $red;
   }
-  
-  .nav-button {
-    margin: 10px 0;
-  }
 
   label {
     font-weight: 700;
@@ -60,11 +60,17 @@ form {
   }
 }
 .registration-container {
-  display:none;
+  display: none;
 }
 .login-container {
-  display:none;
+  display: none;
 }
-.logout {
-  margin-left: 10px;
+.new-button,
+.log-out button {
+  display: none;
+}
+#signedUser {
+  text-align: right;
+  padding: 0 25px;
+  color: $purple;
 }

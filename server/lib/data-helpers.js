@@ -25,6 +25,12 @@ module.exports = function makeDataHelpers(db) {
       db.collection("users").findOne({'handle':handle}).then((data)=>{
         callback(null, data);
       });
+    },
+    // returns user information necessary only to post tweet
+    getUser: function(handle, callback) {
+      db.collection("users").findOne({'handle':handle}, { _id: 0, password: 0 }).then((data)=>{
+        callback(null, data);
+      });
     }
 
   };

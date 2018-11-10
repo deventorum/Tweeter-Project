@@ -6,6 +6,8 @@
   padding: $padding;
   display: inline-block;
   border-radius: $std-radius;
+  font-style: normal;
+  font-weight: 300;
 }
 @mixin headFooter($position, $padding, $margin-top) {
   background: linear-gradient(to right top, $orange, $red);
