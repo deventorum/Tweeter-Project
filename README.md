@@ -6,8 +6,6 @@ Tweeter is a simple, single-page Twitter clone. Express is used as a backend. Ap
 
 !["Screenshot of the home page"](https://github.com/deventorum/Tweeter-Project/blob/master/docs/home.png)
 !["Screenshot of registration form"](https://github.com/deventorum/Tweeter-Project/blob/master/docs/Registration.png)
-!["Screenshot of the mobile version of the application"](https://github.com/deventorum/Tweeter-Project/blob/master/docs/Mobile-view.png)
-!["Screenshot of the mobile version of the application (the user is signed in)"](https://github.com/deventorum/Tweeter-Project/blob/master/docs/Mobile-view-top.png)
 
 ## Dependencies
 
