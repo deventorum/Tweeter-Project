@@ -59,42 +59,53 @@ module.exports = function(DataHelpers) {
   tweetsRoutes.post("/login", function(req, res) {
     const loginName = req.body.handle;
     const loginPassword = req.body.password;
-    
-    console.log(req.body);
+
     DataHelpers.checkUser(loginName, (err, user) => {
       if (err) {
         res.status(500).json({ error: err.message });
       }
-      
-      if (loginName === user.handle) {
+      if (user) {
         if (parseInt(loginPassword) === parseInt(user.password)) {
           req.session['userID'] = req.body.handle;
           res.redirect('/');
+        } else {
+          // redirects back to homepage if password doesn't match
+          res.redirect('/')
         }
+      } else {
+        // if there is no existing user with this name 
+        res.redirect('/')
       }
     })
     
   })
 
   tweetsRoutes.post("/registration", function(req, res) {
-    const newUser = {
-      "name": req.body.userName,
-      "handle": req.body.handle,
-      "password": req.body.password,
-      "avatars": userHelper.generateAvatars(req.body.handle)
-    }
-    DataHelpers.addUser(newUser, (err) => {
-      if (err) {
-        res.status(500).json({ error: err.message });
-      } else {
-        res.redirect("/");
+    // checks for the length of the content
+    if (req.body.userName.length <= 15 && req.body.handle.length <= 15 && req.body.password.length <= 15) {
+      const newUser = {
+        "name": req.body.userName,
+        "handle": req.body.handle,
+        "password": req.body.password,
+        // avatars are randomly generated
+        "avatars": userHelper.generateAvatars(req.body.handle)
       }
-    })
-    console.log('registration')
+      DataHelpers.addUser(newUser, (err) => {
+        if (err) {
+          res.status(500).json({ error: err.message });
+        } else {
+          // creates a session right away
+          req.session['userID'] = req.body.handle;
+          res.redirect("/");
+        }
+      })
+    } else {
+      res.redirect("/");
+    }
   })
 
+  // simply deletes cookie session
   tweetsRoutes.post("/logout", function(req, res) {
-    console.log('logout');
     req.session = null;
     res.redirect('/');
   })
@@ -105,10 +116,9 @@ module.exports = function(DataHelpers) {
         if (err) {
           res.status(500).json({ error: err.message });
         }
-        // sends back user object to ajax
         if (user) {
+          // sends back user handle to ajax
           res.json({
-            "name" : user.name,
             "handle": user.handle,
             "validity": true
           })
@@ -117,6 +127,7 @@ module.exports = function(DataHelpers) {
       })
       
     } else {
+      // sends back info that validation was unsuccesful
       res.json({
         "validity": false
       })

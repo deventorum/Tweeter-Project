@@ -55,7 +55,7 @@ $(document).ready(function() {
       `<header>
         <img class="avatar" src="${data.user.avatars.regular}" alt="users avatar">
         <h2>${data.user.name}</h2>
-        <p>${data.user.handle}</p>
+        <p>@${data.user.handle}</p>
       </header>`
     )
     // The tweet
