@@ -4,6 +4,7 @@ const userHelper    = require("../lib/util/user-helper")
 
 const express       = require('express');
 const tweetsRoutes  = express.Router();
+const bcrypt = require('bcrypt');
 
 module.exports = function(DataHelpers) {
 
@@ -65,7 +66,7 @@ module.exports = function(DataHelpers) {
         res.status(500).json({ error: err.message });
       }
       if (user) {
-        if (parseInt(loginPassword) === parseInt(user.password)) {
+        if (bcrypt.compareSync(loginPassword, user.password)) {
           req.session['userID'] = req.body.handle;
           res.redirect('/');
         } else {
@@ -86,7 +87,7 @@ module.exports = function(DataHelpers) {
       const newUser = {
         "name": req.body.userName,
         "handle": req.body.handle,
-        "password": req.body.password,
+        "password": bcrypt.hashSync(req.body.password, 10),
         // avatars are randomly generated
         "avatars": userHelper.generateAvatars(req.body.handle)
       }
