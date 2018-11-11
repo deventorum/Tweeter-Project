@@ -329,7 +329,7 @@ li {
   position: fixed;
   padding: 0;
   margin-top: 0;
-  padding-bottom: 20px;
+  padding: 20px 0;
 }
 
 .main-header div {
@@ -347,7 +347,6 @@ li {
 
 h1 {
   color: #5c3a72;
-  margin: 1rem 0;
 }
 
 .navbar-general {
@@ -415,6 +414,7 @@ form input {
   padding: 10px;
   border-radius: 10px;
   border: 2px solid #f56a4e;
+  text-align: center;
 }
 
 form label {
@@ -465,6 +465,10 @@ main.padding-log {
 
 .tweets h3 {
   color: #5c3a72;
+}
+
+.tweets p {
+  text-align: justify;
 }
 
 article {
@@ -610,7 +614,7 @@ button[type='submit'] {
   color: #f5f5f5;
   background-color: #5c3a72;
   font-size: 1.2rem;
-  padding: 0 15px 0 10px;
+  padding: 10px;
   display: inline-block;
   border-radius: 25px;
   font-style: normal;
@@ -642,5 +646,55 @@ button[type='submit']:hover {
   font-weight: 700;
   font-style: italic;
   color: #5c3a72;
+}
+
+@media (max-width: 520px) {
+  .upper-header h1 {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .upper-header {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .navbar-general {
+    width: 100%;
+    padding: 10px 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .nav-button {
+    margin: 10px 0;
+  }
+  #signedUser {
+    text-align: center;
+  }
+  main {
+    padding-top: 300px;
+  }
+  main.padding-reg {
+    padding-top: 600px;
+  }
+  main.padding-log {
+    padding-top: 500px;
+  }
+  article header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  article header p {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
 }
 /*# sourceMappingURL=layout.css.map */

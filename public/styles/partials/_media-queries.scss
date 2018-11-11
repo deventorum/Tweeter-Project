@@ -1,0 +1,41 @@
+@media (max-width: 520px) {
+  .upper-header h1 {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .upper-header {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .navbar-general {
+    width: 100%;
+    padding: 10px 0;
+    flex-direction: column;
+  }
+  .nav-button {
+    margin: 10px 0;
+  }
+  #signedUser {
+    text-align: center;
+  }
+  main {
+    padding-top: 300px;
+
+    &.padding-reg {
+      padding-top: 600px;
+    }
+
+    &.padding-log {
+      padding-top: 500px;
+    }
+  }
+  article header {
+    flex-direction: column;
+
+    p {
+      align-self: center;
+    }
+  }
+}

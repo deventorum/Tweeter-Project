@@ -21,6 +21,9 @@ main {
   h3 {
     color: $purple;
   }
+  p {
+    text-align: justify;
+  }
 }
 article {
   background-color: $yellow-transp;
@@ -113,7 +116,7 @@ article {
   }
 }
 button[type='submit'] {
-  @include buttonType($white, $purple, 0 15px 0 10px);
+  @include buttonType($white, $purple, 10px);
 
   &:hover {
     color: $red;

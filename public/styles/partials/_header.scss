@@ -1,6 +1,6 @@
 .main-header {
   @include headFooter(fixed, 0, 0);
-  padding-bottom: 20px;
+  padding: 20px 0;
 
   div {
     width: 100%;
@@ -16,7 +16,6 @@
 
 h1 {
   color: $purple;
-  margin: 1rem 0;
 }
 .navbar-general {
   display: flex;
@@ -52,6 +51,7 @@ form {
     padding: 10px;
     border-radius: $small-radius;
     border: 2px solid $red;
+    text-align: center;
   }
 
   label {
