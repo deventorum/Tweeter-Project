@@ -5,6 +5,9 @@
 }
 
 @media (max-width: 400px) {
+  .main-header {
+    position: static;
+  }
   .upper-header {
     justify-content: center;
     flex-wrap: wrap;
@@ -21,14 +24,14 @@
     text-align: center;
   }
   main {
-    padding-top: 300px;
+    padding-top: 20px;
 
     &.padding-reg {
-      padding-top: 600px;
+      padding-top: 20px;
     }
 
     &.padding-log {
-      padding-top: 500px;
+      padding-top: 20px;
     }
   }
   article header {

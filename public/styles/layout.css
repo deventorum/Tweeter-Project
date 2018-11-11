@@ -335,6 +335,7 @@ li {
 .main-header div {
   width: 100%;
   max-width: 1280px;
+  margin: 0 auto;
 }
 
 .logo {
@@ -655,6 +656,9 @@ button[type='submit']:hover {
 }
 
 @media (max-width: 400px) {
+  .main-header {
+    position: static;
+  }
   .upper-header {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -677,13 +681,13 @@ button[type='submit']:hover {
     text-align: center;
   }
   main {
-    padding-top: 300px;
+    padding-top: 20px;
   }
   main.padding-reg {
-    padding-top: 600px;
+    padding-top: 20px;
   }
   main.padding-log {
-    padding-top: 500px;
+    padding-top: 20px;
   }
   article header {
     -webkit-box-orient: vertical;
